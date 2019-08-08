@@ -1,4 +1,4 @@
-def consolidate_cart(cart)
+def consolidate_cart(cart = {})
   new_cart = {}
   cart.each {|object|
     object.each {|item,info|
