@@ -37,10 +37,17 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  cart.map {|item|
-    if item[:clearance]
-      item[:price] = item[:price] * .20
+  cart.map { |item,info|
+    if info[:clearance]
+    item_price = info[:price]
+    
+    item_discount = (item_price * 0.20).round(2)
+    item_final = item_price - item_discount
+    info[:price] = item_final
+    end
+  
   }
+  cart
 end
 
 def checkout(cart, coupons)
