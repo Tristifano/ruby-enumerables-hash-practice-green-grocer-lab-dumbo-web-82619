@@ -24,12 +24,14 @@ def apply_coupons(cart, coupons)
     if cart.include?(item) && cart.include?(couponed_item)
       cart_count = original_item[:count]
       updated_count = cart_count - coupon_num
-      if updated_count > 
-      original_item[:count] = updated_count
-      cart[couponed_item][:count] = cart[couponed_item][:count] + deal[:num]
+      if updated_count > 0
+        original_item[:count] = updated_count
+        cart[couponed_item][:count] = cart[couponed_item][:count] + deal[:num]
+      end
     elsif cart.include?(item)
     cart_count = original_item[:count]
     updated_count = cart_count - coupon_num
+    if updated_count >0
     original_item[:count] = updated_count
       cart[couponed_item] = {:price => discounted_item_cost, :clearance => original_item    [:clearance], :count => deal[:num] }
     end
